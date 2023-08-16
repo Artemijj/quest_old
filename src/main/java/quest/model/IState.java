@@ -1,5 +1,5 @@
 package quest.model;
 
-public interface State {
+public interface IState {
     void step(String reply);
 }

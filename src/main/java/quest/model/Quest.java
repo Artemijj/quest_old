@@ -1,47 +1,74 @@
 package quest.model;
 
 public class Quest {
-    private State state;
-    private State firstState;
-    private State secondState;
-    private State thirdState;
-    private State wrongState;
-    private State winState;
+    private IState IState;
+//    private IState firstIState;
+//    private IState secondIState;
+//    private IState thirdIState;
+    private IState wrongIState;
+//    private IState winIState;
+    private String user;
+    private String ipAddress;
+    private int numberGames;
 
     public Quest() {
-        firstState = new FirstState(this);
-        secondState = new SecondState(this);
-        thirdState = new ThirdState(this);
-        wrongState = new WrongState(this);
-        winState = new WinState(this);
-        state = firstState;
+//        firstIState = new FirstIState(this);
+//        secondIState = new SecondIState(this);
+//        thirdIState = new ThirdIState(this);
+        wrongIState = new WrongIState(this);
+//        winIState = new WinIState(this);
+//        IState = firstIState;
     }
 
-    public void setState(State s) {
-        this.state = s;
+    public void setState(IState s) {
+        this.IState = s;
     }
 
-    public State getState() {
-        return state;
+    public IState getState() {
+        return IState;
     }
 
-    public State getFirstState() {
-        return firstState;
+//    public IState getFirstState() {
+//        return firstIState;
+//    }
+//
+//    public IState getSecondState() {
+//        return secondIState;
+//    }
+//
+//    public IState getThirdState() {
+//        return thirdIState;
+//    }
+
+    public IState getWrongState() {
+        return wrongIState;
     }
 
-    public State getSecondState() {
-        return secondState;
+//    public IState getWinState() {
+//        return winIState;
+//    }
+
+    public String getUser() {
+        return user;
     }
 
-    public State getThirdState() {
-        return thirdState;
+    public void setUser(String user) {
+        this.user = user;
     }
 
-    public State getWrongState() {
-        return wrongState;
+    public String getIpAddress() {
+        return ipAddress;
     }
 
-    public State getWinState() {
-        return winState;
+    public void setIpAddress(String ipAddress) {
+        this.ipAddress = ipAddress;
+    }
+
+    public int getNumberGames() {
+        return numberGames;
+    }
+
+    public void setNumberGames(int numberGames) {
+        this.numberGames = numberGames;
     }
 }

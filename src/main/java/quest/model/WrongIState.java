@@ -1,10 +1,8 @@
 package quest.model;
 
-import quest.model.Quest;
-
-public class WinState implements State {
+public class WrongIState implements IState {
     private Quest quest;
-    public WinState(Quest quest) {
+    public WrongIState(Quest quest) {
         this.quest = quest;
     }
     @Override
