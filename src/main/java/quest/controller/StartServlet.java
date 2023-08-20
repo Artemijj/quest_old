@@ -19,14 +19,17 @@ public class StartServlet extends HttpServlet {
         HttpSession session = req.getSession();
         Quest quest = (Quest) session.getAttribute("quest");
         String ipAddress = req.getRemoteAddr();
-        String user = req.getParameter("name"); //!!!!!!!!!!!!!!!!!!!!!!!
+        String user = req.getParameter("user");
         if (quest == null) {
             quest = new Quest();
-            quest.setUser(user);
+            quest.setUser(user != null? user : "");
             quest.setIpAddress(ipAddress);
             quest.setNumberGames(1);
-        } else if (!user.equals(quest.getUser())) {
-            quest.setUser(user);
+        } else if (user.equals(quest.getUser()) && !user.equals("")) {
+//            int numberGames = quest.getNumberGames();
+            quest.setNumberGames(quest.getNumberGames() + 1);
+        } else if (!user.equals(quest.getUser()) || user.equals("")) {
+            quest.setUser(user != null? user : "");
             quest.setIpAddress(ipAddress);
             quest.setNumberGames(1);
         }
@@ -36,5 +39,4 @@ public class StartServlet extends HttpServlet {
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/quest.jsp");
         requestDispatcher.forward(req, resp);
     }
-
 }
