@@ -25,7 +25,7 @@ public class QuestServlet extends HttpServlet {
         }
 
         quest.getState().setNextState(quest.getState(nextLevel), quest.getState(-1), answer);
-        quest.setLevel(nextLevel);
+        quest.setLevel(nextLevel++);
 
         session.setAttribute("quest", quest);
 
