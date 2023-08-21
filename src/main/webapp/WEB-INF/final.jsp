@@ -25,7 +25,7 @@
     <%= quest.getState().getMessage()%>
 </h2>
 
-<form action="/final">
+<form action="final">
     <input type="submit" value="<%= rb.getString("restartButton")%>" />
 </form>
 

@@ -27,7 +27,7 @@
 <p><%= quest.getState().getQuestion()%></p>
 
 <br><br>
-<form action="/quest">
+<form action="quest">
 <%--<form action="WEB-INF/quest.jsp" method="post">--%>
     <input type="radio" name="answer" value="<%= quest.getState().getAnswerOne()%>"/><%= quest.getState().getAnswerOne()%>
     <br>

@@ -28,7 +28,7 @@
 
 <br>
 
-<form action="/start">
+<form action="start">
     <div class="position1">
         <%= rb.getString("enterName")%>
     </div>

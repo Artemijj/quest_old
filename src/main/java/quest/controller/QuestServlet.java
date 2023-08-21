@@ -21,22 +21,22 @@ public class QuestServlet extends HttpServlet {
         String answer = req.getParameter("answer");
 
         if (answer == null) {
-            req.getRequestDispatcher("/WEB-INF/quest.jsp").forward(req, resp);
+            req.getRequestDispatcher("WEB-INF/view/quest.jsp").forward(req, resp);
         }
 
         quest.getState().setNextState(quest.getState(nextLevel), quest.getState(-1), answer);
-        quest.setLevel(nextLevel++);
+        quest.setLevel(nextLevel);
 
         session.setAttribute("quest", quest);
 
         if (quest.getState().equals(quest.getState(-1))) {
-            req.getRequestDispatcher("/WEB-INF/final.jsp").forward(req, resp);
+            req.getRequestDispatcher("WEB-INF/final.jsp").forward(req, resp);
         }
 
         if (nextLevel >= 4) {
-            req.getRequestDispatcher("/WEB-INF/final.jsp").forward(req, resp);
+            req.getRequestDispatcher("WEB-INF/final.jsp").forward(req, resp);
         } else {
-            req.getRequestDispatcher("/WEB-INF/quest.jsp").forward(req, resp);
+            req.getRequestDispatcher("WEB-INF/view/quest.jsp").forward(req, resp);
         }
     }
 }
