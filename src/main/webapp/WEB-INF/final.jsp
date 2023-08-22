@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>Quest</title>
-    <link href="../../../webapp/static/main.css" rel="stylesheet" type="text/css">
+    <link href="../static/main.css" rel="stylesheet" type="text/css">
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <meta charset="UTF-8">
 </head>
