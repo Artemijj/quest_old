@@ -6,11 +6,13 @@ public class State {
     private String answerOne;
     private String answerTwo;
     private String message;
-    public State(Quest quest, String question, String answerOne, String answerTwo) {
+    private State stateOne;
+    private State stateTwo;
+    public State(Quest quest) {
         this.quest = quest;
-        this.question = question;
-        this.answerOne = answerOne;
-        this.answerTwo = answerTwo;
+//        this.question = question;
+//        this.answerOne = answerOne;
+//        this.answerTwo = answerTwo;
     }
 
     public State(Quest quest, String message) {
@@ -18,15 +20,17 @@ public class State {
         this.message = message;
     }
 
-    public void setNextState(State stateOne, State stateTwo, String answer) {
-        if (getMessage() != null) {
-            return;
-        }
-        if (answer.equals(answerOne)) {
-            quest.setState(stateOne);
-        } else if (answer.equals(answerTwo)) {
-            quest.setState(stateTwo);
-        }
+    public void setNextStates(State stateOne, State stateTwo) {
+//        if (getMessage() != null) {
+//            return;
+//        }
+//        if (answer.equals(answerOne)) {
+//            quest.setState(stateOne);
+//        } else if (answer.equals(answerTwo)) {
+//            quest.setState(stateTwo);
+//        }
+        this.stateOne = stateOne;
+        this.stateTwo = stateTwo;
     }
 
     public String getQuestion() {
@@ -43,5 +47,11 @@ public class State {
 
     public String getMessage() {
         return message;
+    }
+    public State getStateOne(){
+        return stateOne;
+    }
+    public State getStateTwo() {
+        return stateTwo;
     }
 }

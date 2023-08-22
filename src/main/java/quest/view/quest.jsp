@@ -24,14 +24,14 @@
 <h2 class="position"><%=rb.getString("level")%><%= quest.getLevel()%></h2>
 <br><br>
 
-<p><%= quest.getState().getQuestion()%></p>
+<p><%= quest.getQuestion(quest.getLevel() - 1)%></p>
 
 <br><br>
 <form action="/quest">
 <%--<form action="WEB-INF/quest.jsp" method="post">--%>
-    <input type="radio" name="answer" value="<%= quest.getState().getAnswerOne()%>"/><%= quest.getState().getAnswerOne()%>
+    <input type="radio" name="answer" value="one"/><%= quest.getAnswerOne(quest.getLevel() - 1)%>
     <br>
-    <input type="radio" name="answer" value="<%= quest.getState().getAnswerTwo()%>"/><%= quest.getState().getAnswerTwo()%>
+    <input type="radio" name="answer" value="two"/><%= quest.getAnswerTwo(quest.getLevel() - 1)%>
     <br><br>
     <input type="submit" value="Ok"/>
 </form>

@@ -17,8 +17,7 @@ public class FinalServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         HttpSession session = req.getSession();
         Quest quest = (Quest) session.getAttribute("quest");
-        quest.setLevel(1);
-        quest.setState(quest.getState(1));
+        quest.levelStart();
         session.setAttribute("quest", quest);
         req.getRequestDispatcher("index.jsp").forward(req, resp);
     }

@@ -1,5 +1,7 @@
 package quest.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -15,22 +17,60 @@ public class Quest {
     private State state3;
     private State win;
     private State fail;
+    private List<String> questions;
+    private List<String> answersOne;
+    private List<String> answersTwo;
 
     public Quest() {
         init();
+        loadLists();
+        levelStart();
     }
 
     private void init() {
+//        Locale locale = new Locale("en", "US");
+//        ResourceBundle rb = ResourceBundle.getBundle("text");
+        state1 = new State(this);
+        state2 = new State(this);
+        state3 = new State(this);
+        win = new State(this, "win");
+        fail = new State(this, "fail");
+        state1.setNextStates(state2, fail);
+        state2.setNextStates(state3, fail);
+        state3.setNextStates(win, fail);
+        numberGames = 1;
+    }
+
+    private void loadLists() {
         Locale locale = new Locale("en", "US");
         ResourceBundle rb = ResourceBundle.getBundle("text");
-        state1 = new State(this, rb.getString("question1"), rb.getString("answerOne1"), rb.getString("answerTwo1"));
-        state2 = new State(this, rb.getString("question2"), rb.getString("answerOne2"), rb.getString("answerTwo2"));
-        state3 = new State(this, rb.getString("question3"), rb.getString("answerOne3"), rb.getString("answerTwo3"));
-        win = new State(this, rb.getString("messageWin"));
-        fail = new State(this, rb.getString("messageFail"));
+        questions = new ArrayList<>();
+        questions.add(rb.getString("question1"));
+        questions.add(rb.getString("question2"));
+        questions.add(rb.getString("question3"));
+
+        answersOne = new ArrayList<>();
+        answersOne.add(rb.getString("answerOne1"));
+        answersOne.add(rb.getString("answerOne2"));
+        answersOne.add(rb.getString("answerOne3"));
+
+        answersTwo = new ArrayList<>();
+        answersTwo.add(rb.getString("answerTwo1"));
+        answersTwo.add(rb.getString("answerTwo2"));
+        answersTwo.add(rb.getString("answerTwo3"));
+    }
+
+    public void levelStart() {
         state = state1;
         level = 1;
-        numberGames = 1;
+    }
+
+    public void setNextState(State st, String answer) {
+        if (answer.equals("one")) {
+            state = st.getStateOne();
+        } else if (answer.equals("two")) {
+            state = st.getStateTwo();
+        }
     }
 
     public void setState(State s) {
@@ -98,5 +138,17 @@ public class Quest {
                 break;
         }
         return st;
+    }
+
+    public String getQuestion(int i) {
+        return questions.get(i);
+    }
+
+    public String getAnswerOne(int i) {
+        return answersOne.get(i);
+    }
+
+    public String getAnswerTwo(int i) {
+        return answersTwo.get(i);
     }
 }
