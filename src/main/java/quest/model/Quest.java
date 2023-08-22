@@ -6,7 +6,7 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class Quest {
-    private State state;
+    private State currentState;
     private String user;
     private String ipAddress;
     private int numberGames;
@@ -31,8 +31,8 @@ public class Quest {
         state1 = new State(this);
         state2 = new State(this);
         state3 = new State(this);
-        win = new State(this, "win");
-        fail = new State(this, "fail");
+        win = new State(this, "messageWin");
+        fail = new State(this, "messageFail");
         state1.setNextStates(state2, fail);
         state2.setNextStates(state3, fail);
         state3.setNextStates(win, fail);
@@ -59,20 +59,16 @@ public class Quest {
     }
 
     public void levelStart() {
-        state = state1;
+        currentState = state1;
         level = 1;
     }
 
-    public void setNextState(State st, String answer) {
-        if (answer.equals("one")) {
-            state = st.getStateOne();
-        } else if (answer.equals("two")) {
-            state = st.getStateTwo();
-        }
+    public void setNextState(String answer) {
+        currentState = currentState.nextState(answer);
     }
 
-    public State getState() {
-        return state;
+    public State getCurrentState() {
+        return currentState;
     }
 
 

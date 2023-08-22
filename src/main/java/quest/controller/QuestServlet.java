@@ -24,7 +24,7 @@ public class QuestServlet extends HttpServlet {
             req.getRequestDispatcher("WEB-INF/quest.jsp").forward(req, resp);
         }
 
-        quest.setNextState(quest.getState(), answer);
+        quest.setNextState(answer);
         quest.setLevel(nextLevel);
 
         session.setAttribute("quest", quest);

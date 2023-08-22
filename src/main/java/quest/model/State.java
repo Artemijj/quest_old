@@ -2,16 +2,16 @@ package quest.model;
 
 public class State {
     private Quest quest;
-    private String message;
+    private String label;
     private State stateOne;
     private State stateTwo;
     public State(Quest quest) {
         this.quest = quest;
     }
 
-    public State(Quest quest, String message) {
+    public State(Quest quest, String label) {
         this.quest = quest;
-        this.message = message;
+        this.label = label;
     }
 
     public void setNextStates(State stateOne, State stateTwo) {
@@ -19,8 +19,18 @@ public class State {
         this.stateTwo = stateTwo;
     }
 
-    public String getMessage() {
-        return message;
+    public State nextState(String answer) {
+        State next = null;
+        if (answer.equals("one")) {
+            next = getStateOne();
+        } else if (answer.equals("two")) {
+            next = getStateTwo();
+        }
+        return next;
+    }
+
+    public String getLabel() {
+        return label;
     }
     public State getStateOne(){
         return stateOne;

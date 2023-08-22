@@ -22,14 +22,7 @@
 
 <body>
 <h2 class="position">
-    <%
-        if (quest.getState().getMessage().equals("win")) {
-//            out.println(quest.getState().getClass().getSimpleName());
-            out.println(rb.getString("messageWin"));
-        } else if (quest.getState().getMessage().equals("fail")) {
-            out.println(rb.getString("messageFail"));
-        }
-    %>
+    <%= rb.getString(quest.getCurrentState().getLabel())%>
 </h2>
 
 <form action="/final">
