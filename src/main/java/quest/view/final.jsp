@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>Quest</title>
-    <link href="../static/main.css" rel="stylesheet" type="text/css">
+    <link href="../../../webapp/static/main.css" rel="stylesheet" type="text/css">
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <meta charset="UTF-8">
 </head>
@@ -23,8 +23,6 @@
 <body>
 <h2 class="position">
     <%
-
-        String message = "";
         if (quest.getState().getMessage().equals("win")) {
 //            out.println(quest.getState().getClass().getSimpleName());
             out.println(rb.getString("messageWin"));

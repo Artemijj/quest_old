@@ -28,8 +28,6 @@ public class Quest {
     }
 
     private void init() {
-//        Locale locale = new Locale("en", "US");
-//        ResourceBundle rb = ResourceBundle.getBundle("text");
         state1 = new State(this);
         state2 = new State(this);
         state3 = new State(this);
@@ -73,10 +71,6 @@ public class Quest {
         }
     }
 
-    public void setState(State s) {
-        this.state = s;
-    }
-
     public State getState() {
         return state;
     }
@@ -106,38 +100,12 @@ public class Quest {
         this.numberGames = numberGames;
     }
 
-    public void setAnswer(String answer) {
-        this.answer = answer;
-    }
-
     public int getLevel() {
         return level;
     }
 
     public void setLevel(int level) {
         this.level = level;
-    }
-
-    public State getState(int i) {
-        State st = null;
-        switch (i) {
-            case 1:
-                st = state1;
-                break;
-            case 2:
-                st = state2;
-                break;
-            case 3:
-                st = state3;
-                break;
-            case 4:
-                st = win;
-                break;
-            case -1:
-                st = fail;
-                break;
-        }
-        return st;
     }
 
     public String getQuestion(int i) {
