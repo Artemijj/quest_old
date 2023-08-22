@@ -36,7 +36,7 @@ public class StartServlet extends HttpServlet {
 
         session.setAttribute("quest", quest);
 
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("quest/view/quest.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("WEB-INF/quest.jsp");
         requestDispatcher.forward(req, resp);
     }
 }

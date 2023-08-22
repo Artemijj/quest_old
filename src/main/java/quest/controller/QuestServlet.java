@@ -21,7 +21,7 @@ public class QuestServlet extends HttpServlet {
         String answer = req.getParameter("answer");
 
         if (answer == null) {
-            req.getRequestDispatcher("quest/view/quest.jsp").forward(req, resp);
+            req.getRequestDispatcher("WEB-INF/quest.jsp").forward(req, resp);
         }
 
         quest.setNextState(quest.getState(), answer);
@@ -30,13 +30,13 @@ public class QuestServlet extends HttpServlet {
         session.setAttribute("quest", quest);
 
         if (answer.equals("two")) {
-            req.getRequestDispatcher("quest/view/final.jsp").forward(req, resp);
+            req.getRequestDispatcher("WEB-INF/final.jsp").forward(req, resp);
         }
 
         if (nextLevel >= 4) {
-            req.getRequestDispatcher("quest/view/final.jsp").forward(req, resp);
+            req.getRequestDispatcher("WEB-INF/final.jsp").forward(req, resp);
         } else {
-            req.getRequestDispatcher("quest/view/quest.jsp").forward(req, resp);
+            req.getRequestDispatcher("WEB-INF/quest.jsp").forward(req, resp);
         }
     }
 }
