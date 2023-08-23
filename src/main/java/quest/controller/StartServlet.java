@@ -26,7 +26,6 @@ public class StartServlet extends HttpServlet {
             quest.setIpAddress(ipAddress);
             quest.setNumberGames(1);
         } else if (user.equals(quest.getUser()) && !user.equals("")) {
-//            int numberGames = quest.getNumberGames();
             quest.setNumberGames(quest.getNumberGames() + 1);
         } else if (!user.equals(quest.getUser()) || user.equals("")) {
             quest.setUser(user != null? user : "");

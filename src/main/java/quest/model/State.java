@@ -1,16 +1,15 @@
 package quest.model;
 
+import java.util.ResourceBundle;
+
 public class State {
-    private Quest quest;
+    private ResourceBundle rb;
     private String label;
     private State stateOne;
     private State stateTwo;
-    public State(Quest quest) {
-        this.quest = quest;
-    }
 
-    public State(Quest quest, String label) {
-        this.quest = quest;
+    public State(ResourceBundle rb, String label) {
+        this.rb = rb;
         this.label = label;
     }
 
@@ -22,20 +21,14 @@ public class State {
     public State nextState(String answer) {
         State next = null;
         if (answer.equals("one")) {
-            next = getStateOne();
+            next = stateOne;
         } else if (answer.equals("two")) {
-            next = getStateTwo();
+            next = stateTwo;
         }
         return next;
     }
 
     public String getLabel() {
         return label;
-    }
-    public State getStateOne(){
-        return stateOne;
-    }
-    public State getStateTwo() {
-        return stateTwo;
     }
 }

@@ -17,7 +17,7 @@ public class QuestServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         HttpSession session = req.getSession();
         Quest quest = (Quest) session.getAttribute("quest");
-        int nextLevel = quest.getLevel() + 1;//!!!!!!!!!!!!!!!!
+        int nextLevel = quest.getLevel() + 1;
         String answer = req.getParameter("answer");
 
         if (answer == null) {

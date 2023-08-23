@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: artemij
-  Date: 18.08.2023
-  Time: 01:07
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
 <head>
@@ -22,14 +15,12 @@
 
 <body>
 <h2 class="position">
-    <%= rb.getString(quest.getCurrentState().getLabel())%>
+    <%= rb.getString("message_" + quest.getCurrentState().getLabel())%>
 </h2>
 
-<form action="/final">
+<form action="final" class="position">
     <input type="submit" value="<%= rb.getString("restartButton")%>" />
 </form>
-
-
 
 <br><br><br><br><br><br>
 <%= rb.getString("user")%><%= quest.getUser()%>
