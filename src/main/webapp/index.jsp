@@ -8,12 +8,6 @@
     <link href="static/main.css" rel="stylesheet" type="text/css">
     <script src="<c:url value="/static/jquery-3.6.0.min.js"/>"></script>
     <meta charset="UTF-8">
-<%--    <style>--%>
-<%--   p {--%>
-<%--    border: 1px solid red;--%>
-<%--    padding: 10px;--%>
-<%--   }--%>
-<%--  </style>--%>
 </head>
 <%@page import="java.util.ResourceBundle" %>
 
@@ -28,7 +22,7 @@
 
 <br>
 
-<form action="/start">
+<form action="start">
     <div class="position1">
         <%= rb.getString("enterName")%>
     </div>
