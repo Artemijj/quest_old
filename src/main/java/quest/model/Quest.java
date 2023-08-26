@@ -12,11 +12,11 @@ public class Quest {
     private int level;
 
     public Quest() {
-        init();
+        initState = init();
         start();
     }
 
-    private void init() {
+    private State init() {
         Locale locale = new Locale("en", "US");
         ResourceBundle rb = ResourceBundle.getBundle("text");
         State state1 = new State(rb, "1");
@@ -27,8 +27,10 @@ public class Quest {
         state1.setNextStates(state2, fail);
         state2.setNextStates(state3, fail);
         state3.setNextStates(win, fail);
-        currentState = initState = state1;
+//        currentState = initState = state1;
         numberGames = 1;
+
+        return state1;
     }
 
     public void start() {
