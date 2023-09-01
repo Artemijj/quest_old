@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class QuestXML {
     @XmlAttribute(name = "init")
     private String initState;
-    @XmlElement //!!!!!!!!!!!!!!!!!!!
+    @XmlAttribute //!!!!!!!!!!!!!!!!!!!
     private ArrayList<StateXML> states;
 
     public QuestXML() {
