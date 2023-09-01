@@ -13,6 +13,10 @@ public class StateXML {
     @XmlAttribute(name = "no")
     private String stateTwo;
 
+    public StateXML() {
+
+    }
+
     public StateXML(String label, String stateOne, String stateTwo) {
         this.label = label;
         this.stateOne = stateOne;
