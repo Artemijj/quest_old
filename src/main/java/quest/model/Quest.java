@@ -21,7 +21,7 @@ public class Quest {
     private QuestXML questXML;
 
     public Quest() throws JAXBException, FileNotFoundException {
-        questXML = readXML("quest_xml.xml");//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        questXML = readXML(String.valueOf(getClass().getClassLoader().getResource("quest_xml.xml")));//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         initState = init(questXML);
         start();
     }
