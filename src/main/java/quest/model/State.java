@@ -1,18 +1,21 @@
 package quest.model;
 
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
 import java.util.ResourceBundle;
 
+@XmlRootElement
 public class State {
-    private ResourceBundle rb;
     private String label;
     private State stateOne;
     private State stateTwo;
 
-    public State(ResourceBundle rb, String label) {
-        this.rb = rb;
+    public State(String label) {
         this.label = label;
     }
 
+    @XmlElement
     public void setNextStates(State stateOne, State stateTwo) {
         this.stateOne = stateOne;
         this.stateTwo = stateTwo;

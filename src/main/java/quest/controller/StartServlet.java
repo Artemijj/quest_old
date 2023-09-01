@@ -1,5 +1,6 @@
 package quest.controller;
 
+import jakarta.xml.bind.JAXBException;
 import quest.model.Quest;
 
 import javax.servlet.http.HttpServlet;
@@ -21,7 +22,11 @@ public class StartServlet extends HttpServlet {
         String ipAddress = req.getRemoteAddr();
         String user = req.getParameter("user");
         if (quest == null) {
-            quest = new Quest();
+            try {
+                quest = new Quest();
+            } catch (JAXBException e) {
+                throw new RuntimeException(e);
+            }
             quest.setUser(user != null? user : "");
             quest.setIpAddress(ipAddress);
             quest.setNumberGames(1);
