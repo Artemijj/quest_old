@@ -7,6 +7,7 @@ import quest.model.XMLmodel.StateXML;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -21,15 +22,15 @@ public class Quest {
     private QuestXML questXML;
 
     public Quest() throws JAXBException, FileNotFoundException {
-        questXML = readXML(String.valueOf(getClass().getClassLoader().getResourceAsStream("quest_xml.xml")));//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        questXML = readXML(getClass().getClassLoader().getResourceAsStream("quest_xml.xml"));//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         initState = init(questXML);
         start();
     }
 
-    private QuestXML readXML(String xml) throws JAXBException, FileNotFoundException {
+    private QuestXML readXML(InputStream xml) throws JAXBException, FileNotFoundException {
         JAXBContext context = JAXBContext.newInstance(QuestXML.class);
     return (QuestXML) context.createUnmarshaller()
-      .unmarshal(new FileReader(xml));
+      .unmarshal(xml);
     }
 
     private State init(QuestXML questXML) {

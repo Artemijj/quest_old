@@ -2,6 +2,7 @@ package quest.model.XMLmodel;
 
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementWrapper;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import quest.model.State;
 
@@ -12,7 +13,8 @@ import java.util.ArrayList;
 public class QuestXML {
     @XmlAttribute(name = "init")
     private String initState;
-    @XmlAttribute //!!!!!!!!!!!!!!!!!!!
+    @XmlElementWrapper(name="states") //!!!!!!!!!!!!!!!!!!!
+    @XmlElement(name="state")
     private ArrayList<StateXML> states;
 
     public QuestXML() {
