@@ -15,7 +15,8 @@
 
 <body>
 <h2 class="position">
-    <%= rb.getString("message_" + quest.getCurrentState().getLabel())%>
+<%--    <%= rb.getString("message_" + quest.getCurrentState().getLabel())%>--%>
+    <%= quest.getResource("message_")%>
 </h2>
 
 <form action="final" class="position">

@@ -17,13 +17,16 @@
 <h2 class="position"><%=rb.getString("level")%><%= quest.getLevel()%></h2>
 <br><br>
 
-<p><%= rb.getString("question_" + quest.getCurrentState().getLabel())%></p>
+<%--<p><%= rb.getString("question_" + quest.getCurrentState().getLabel())%></p>--%>
+<p><%= quest.getResource("question_")%></p>
 
 <br><br>
 <form action="quest">
-    <input type="radio" name="answer" value="one"/><%= rb.getString("answerOne_" + quest.getCurrentState().getLabel())%>
+<%--    <input type="radio" name="answer" value="one"/><%= rb.getString("answerOne_" + quest.getCurrentState().getLabel())%>--%>
+    <input type="radio" name="answer" value="one"/><%= quest.getResource("answerOne_")%>
     <br>
-    <input type="radio" name="answer" value="two"/><%= rb.getString("answerTwo_" + quest.getCurrentState().getLabel())%>
+<%--    <input type="radio" name="answer" value="two"/><%= rb.getString("answerTwo_" + quest.getCurrentState().getLabel())%>--%>
+    <input type="radio" name="answer" value="two"/><%= quest.getResource("answerTwo_")%>
     <br><br>
     <input type="submit" value="Ok"/>
 </form>

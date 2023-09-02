@@ -10,6 +10,7 @@ import java.io.FileReader;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 public class Quest {
@@ -19,9 +20,13 @@ public class Quest {
     private String ipAddress;
     private int numberGames;
     private int level;
+    private int maxLevel;
     private QuestXML questXML;
+    private ResourceBundle rb;
 
     public Quest() throws JAXBException, FileNotFoundException {
+        Locale locale = new Locale("en", "US");
+        rb = ResourceBundle.getBundle("text");
         questXML = readXML(getClass().getClassLoader().getResourceAsStream("quest_xml.xml"));//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         initState = init(questXML);
         start();
@@ -39,6 +44,8 @@ public class Quest {
         for (StateXML stateXML: questXML.getStates()) {
             stateMap.put(stateXML.getLabel(), new State(stateXML.getLabel()));
         }
+
+        maxLevel = stateMap.size() - 2;
 
         for (StateXML stateXML: questXML.getStates()) {
             State modelState = stateMap.get(stateXML.getLabel());
@@ -109,5 +116,19 @@ public class Quest {
 
     public void setLevel(int level) {
         this.level = level;
+    }
+
+    public int getMaxLevel() {
+        return maxLevel;
+    }
+
+    public String getResource(String resource) {
+        String res = "";
+        try {
+            res = rb.getString(resource + currentState.getLabel());
+        } catch (MissingResourceException e) {
+            res = rb.getString(resource + "Default");
+        }
+        return res;
     }
 }

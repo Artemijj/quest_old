@@ -33,7 +33,7 @@ public class QuestServlet extends HttpServlet {
             req.getRequestDispatcher("WEB-INF/final.jsp").forward(req, resp);
         }
 
-        if (nextLevel >= 4) {
+        if (nextLevel > quest.getMaxLevel()) {
             req.getRequestDispatcher("WEB-INF/final.jsp").forward(req, resp);
         } else {
             req.getRequestDispatcher("WEB-INF/quest.jsp").forward(req, resp);
