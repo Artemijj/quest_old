@@ -6,7 +6,6 @@ import quest.model.XMLmodel.QuestXML;
 import quest.model.XMLmodel.StateXML;
 
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Locale;
@@ -25,8 +24,8 @@ public class Quest {
     private ResourceBundle rb;
 
     public Quest() throws JAXBException, FileNotFoundException {
-        Locale locale = new Locale("en", "US");
-        rb = ResourceBundle.getBundle("text");
+        Locale locale = new Locale("ru", "RU");
+        rb = ResourceBundle.getBundle("text", locale);
         questXML = readXML(getClass().getClassLoader().getResourceAsStream("quest_xml.xml"));//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         initState = init(questXML);
         start();
@@ -76,7 +75,6 @@ public class Quest {
         level = 1;
     }
 
-
     public void setNextState(String answer) {
         currentState = currentState.nextState(answer);
     }
@@ -84,7 +82,6 @@ public class Quest {
     public State getCurrentState() {
         return currentState;
     }
-
 
     public String getUser() {
         return user;
